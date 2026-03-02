@@ -21,21 +21,6 @@ class Utility(commands.Cog):
             title="📜 Bot Commands",
             description="Prefix: ^",
             color=discord.Color.green()
-        )
-
-        embed.add_field(
-            name="🎉 Fun",
-            value="""
-^coinflip
-^dice
-^roll <number>
-^rps <choice>
-^choose <option1, option2>
-^8ball <question>
-^say <message>
-""",
-            inline=False
-        )
 
         embed.add_field(
             name="🔧 Utility",
