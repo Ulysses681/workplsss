@@ -13,7 +13,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 
-bot = commands.Bot(command_prefix="$", intents=intents, help_command=None)
+bot = commands.Bot(command_prefix="^", intents=intents, help_command=None)
 
 # ================= DATABASE =================
 conn = sqlite3.connect("database.db")
