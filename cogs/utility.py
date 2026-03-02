@@ -15,12 +15,15 @@ class Utility(commands.Cog):
         self.welcome_enabled = False
 
     # ================= HELP COMMAND =================
+       # ================= HELP COMMAND =================
+   
     @commands.command()
     async def help(self, ctx):
         embed = discord.Embed(
             title="📜 Bot Commands",
             description="Prefix: ^",
             color=discord.Color.green()
+        )
 
         embed.add_field(
             name="🔧 Utility",
@@ -56,7 +59,6 @@ class Utility(commands.Cog):
         )
 
         await ctx.send(embed=embed)
-
     # ================= UTILITY =================
     @commands.command()
     async def ping(self, ctx):
