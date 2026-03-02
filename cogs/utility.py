@@ -20,10 +20,10 @@ class Utility(commands.Cog):
         embed.add_field(
             name="🛡 Moderation",
             value="""
-$kick <user> - Kick a member
-$ban <user> - Ban a member
-$timeout <user> <minutes> - Timeout a member
-$clear <amount> - Delete messages
+^kick <user> - Kick a member
+^ban <user> - Ban a member
+^timeout <user> <minutes> - Timeout a member
+^clear <amount> - Delete messages
 """,
             inline=False
         )
@@ -31,10 +31,10 @@ $clear <amount> - Delete messages
         embed.add_field(
             name="💰 Economy",
             value="""
-$balance - Check balance
-$daily - Daily reward
-$work - Earn coins
-$leaderboard - Top users
+^balance - Check balance
+^daily - Daily reward
+^work - Earn coins
+^leaderboard - Top users
 """,
             inline=False
         )
@@ -42,19 +42,19 @@ $leaderboard - Top users
         embed.add_field(
             name="🎉 Fun",
             value="""
-$coinflip - Flip a coin
-$8ball <question> - Ask the magic 8ball
-$dice - Roll a dice
-$roll <number> - Roll custom number
-$rps <choice> - Rock Paper Scissors
-$choose <options> - Bot chooses
-$joke - Random joke
-$roast <user> - Roast someone
-$ship <user1> <user2> - Compatibility
-$poll <question> - Create poll
-$math - Random math problem
-$quote - Random quote
-$animal - Animal fact
+^coinflip - Flip a coin
+^8ball <question> - Ask the magic 8ball
+^dice - Roll a dice
+^roll <number> - Roll custom number
+^rps <choice> - Rock Paper Scissors
+^choose <options> - Bot chooses
+^joke - Random joke
+^roast <user> - Roast someone
+^ship <user1> <user2> - Compatibility
+^poll <question> - Create poll
+^math - Random math problem
+^quote - Random quote
+^animal - Animal fact
 """,
             inline=False
         )
@@ -62,16 +62,16 @@ $animal - Animal fact
         embed.add_field(
             name="🔧 Utility",
             value="""
-$ping - Check latency
-$userinfo <user> - User info
-$serverinfo - Server info
-$avatar <user> - Get avatar
-$botinfo - Bot stats
-$membercount - Server member count
-$roleinfo <role> - Role details
-$channelinfo - Channel details
-$invite - Bot invite link
-$uptime - Bot uptime
+^ping - Check latency
+^userinfo <user> - User info
+^serverinfo - Server info
+^avatar <user> - Get avatar
+^botinfo - Bot stats
+^membercount - Server member count
+^roleinfo <role> - Role details
+^channelinfo - Channel details
+^invite - Bot invite link
+^uptime - Bot uptime
 """,
             inline=False
         )
