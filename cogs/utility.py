@@ -7,7 +7,7 @@ class Utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.start_time = time.time()
-
+        self.afk_users = {}
     # ================= HELP COMMAND =================
     @commands.command()
     async def help(self, ctx):
@@ -72,6 +72,7 @@ class Utility(commands.Cog):
 ^channelinfo - Channel details
 ^invite - Bot invite link
 ^uptime - Bot uptime
+^afk <reason> - Set AFK status
 """,
             inline=False
         )
@@ -149,6 +150,30 @@ class Utility(commands.Cog):
         uptime_seconds = int(time.time() - self.start_time)
         uptime_string = str(datetime.timedelta(seconds=uptime_seconds))
         await ctx.send(f"⏳ Uptime: {uptime_string}")
+
+    @commands.command()
+async def afk(self, ctx, *, reason="AFK"):
+    self.afk_users[ctx.author.id] = reason
+    await ctx.send(f"💤 {ctx.author.mention} is now AFK: {reason}")
+    
+    @commands.Cog.listener()
+async def on_message(self, message):
+    if message.author.bot:
+        return
+
+    # Remove AFK when user talks
+    if message.author.id in self.afk_users:
+        del self.afk_users[message.author.id]
+        await message.channel.send("👋 Welcome back! AFK removed.")
+
+    # Notify if mentioning AFK users
+    for user in message.mentions:
+        if user.id in self.afk_users:
+            await message.channel.send(
+                f"{user.name} is AFK: {self.afk_users[user.id]}"
+            )
+
+    await self.bot.process_commands(message)
 
 async def setup(bot):
     await bot.add_cog(Utility(bot))
