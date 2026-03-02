@@ -151,29 +151,27 @@ class Utility(commands.Cog):
         uptime_string = str(datetime.timedelta(seconds=uptime_seconds))
         await ctx.send(f"⏳ Uptime: {uptime_string}")
 
-       @commands.command()
+           @commands.command()
     async def afk(self, ctx, *, reason="AFK"):
         self.afk_users[ctx.author.id] = reason
         await ctx.send(f"💤 {ctx.author.mention} is now AFK: {reason}")
-    
+
     @commands.Cog.listener()
-async def on_message(self, message):
-    if message.author.bot:
-        return
+    async def on_message(self, message):
+        if message.author.bot:
+            return
 
-    # Remove AFK when user talks
-    if message.author.id in self.afk_users:
-        del self.afk_users[message.author.id]
-        await message.channel.send("👋 Welcome back! AFK removed.")
+        if message.author.id in self.afk_users:
+            del self.afk_users[message.author.id]
+            await message.channel.send("👋 Welcome back! AFK removed.")
 
-    # Notify if mentioning AFK users
-    for user in message.mentions:
-        if user.id in self.afk_users:
-            await message.channel.send(
-                f"{user.name} is AFK: {self.afk_users[user.id]}"
-            )
+        for user in message.mentions:
+            if user.id in self.afk_users:
+                await message.channel.send(
+                    f"{user.name} is AFK: {self.afk_users[user.id]}"
+                )
 
-    await self.bot.process_commands(message)
+        await self.bot.process_commands(message)
 
 async def setup(bot):
     await bot.add_cog(Utility(bot))
